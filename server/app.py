@@ -53,6 +53,7 @@ class PlantByID(Resource):
 
         for attr in data:
             setattr(plant, attr, data[attr])
+            
         db.session.add(plant)
         db.session.commit()
 
@@ -69,7 +70,7 @@ class PlantByID(Resource):
         plant = Plant.query.filter_by(id=id).first()
 
         db.session.delete(plant)
-        db.sesson.commit()
+        db.session.commit()
 
         response = make_response('', 204)
 
